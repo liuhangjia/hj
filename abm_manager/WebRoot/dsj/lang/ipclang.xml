@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lang>
+  <Resources lan="zh-cn" name='简体中文' >
+  		<jsinfo>			
+			<LoginTips1>账号不能为空！</LoginTips1>
+			<LoginTips2>账号或密码错误！</LoginTips2>
+			<LoginTips3>登录失败</LoginTips3>
+			<htmllogin_passisempty>密码不能为空。</htmllogin_passisempty>
+			<htmllogin_ctrlversionerror1>控件与固件发布不兼容，请重新下载安装！</htmllogin_ctrlversionerror1>
+			<htmllogin_ctrlversionerror>控件与发布固件时不相同，建议重新下载安装！</htmllogin_ctrlversionerror>
+			<networdk_connecterror>网络连接错误，请检测设备是否已连接。</networdk_connecterror>
+			<networdk_connecterror>用户登录错误，请检测用户或密码是否正确！</networdk_connecterror>
+			<userlogin_waitinfo>用户登录中...</userlogin_waitinfo>	
+			<PlayerTips1>速度值必须是</PlayerTips1>
+			<PlayerTips2>速度值必须是整数！</PlayerTips2>
+			<PlayerTips3>预置点必须是</PlayerTips3>
+			<PlayerTips4>预置点必须是整数！</PlayerTips4>	
+			
+			<SnapShot_error>抓图失败，请先播放然后再抓拍！</SnapShot_error> 
+			<record_pathfull>录像失败，存储目录空间小于2G无法录像！</record_pathfull>
+			<record_notplayer>录像失败，请先播放然后再进行录像！</record_notplayer>
+			
+			
+			<EVNET_INITP2P_OK>初始化P2P成功,连接中...</EVNET_INITP2P_OK>
+			<EVNET_INITP2P_ERROR>初始化P2P失败!</EVNET_INITP2P_ERROR>			
+			<EVENT_START_CONNECT_DEVICE>连接设备中...</EVENT_START_CONNECT_DEVICE>
+			<EVENT_START_CONNECT_DEVICE_ERROR>连接设备中失败!</EVENT_START_CONNECT_DEVICE_ERROR>
+			<EVENT_P2PSERVER_LOGIN_OK>登陆P2P服务器成功!</EVENT_P2PSERVER_LOGIN_OK>
+			<EVENT_P2PSERVER_LOGOUT>登陆P2P服务器失败!</EVENT_P2PSERVER_LOGOUT>
+			<EVENT_P2PERROR_EVNETINFO>P2P服务返回错误代码:{error}!</EVENT_P2PERROR_EVNETINFO>
+			<EVENT_P2PCONNECT_DEVICEOK>连接设备成功!</EVENT_P2PCONNECT_DEVICEOK>
+			<EVENT_P2PCONNECT_CLOSE>连接设备断开!</EVENT_P2PCONNECT_CLOSE>
+			<EVENT_P2P_EXIT_CONNECT>已退出P2P服务器!</EVENT_P2P_EXIT_CONNECT>
+			
+
+			<alarmmsg0_tip>告警开始</alarmmsg0_tip>
+			<alarmmsg1_tip>设备下线</alarmmsg1_tip>
+			<alarmmsg2_tip>设备上线</alarmmsg2_tip>
+			<alarmmsg3_tip>USB接上</alarmmsg3_tip>
+			<alarmmsg4_tip>USB拔出</alarmmsg4_tip>
+			<alarmmsg5_tip>SD卡1接上</alarmmsg5_tip>
+			<alarmmsg6_tip>SD卡1拔出</alarmmsg6_tip>
+			<alarmmsg7_tip>SD卡2接上</alarmmsg7_tip>
+			<alarmmsg8_tip>SD卡2拔出</alarmmsg8_tip>
+			<alarmmsg9_tip>USB存储空间不足</alarmmsg9_tip>
+			<alarmmsg10_tip>SD卡1存储空间不足</alarmmsg10_tip>
+			<alarmmsg11_tip>SD卡2存储空间不足</alarmmsg11_tip>
+			<alarmmsg12_tip>视频丢失</alarmmsg12_tip>
+			<alarmmsg13_tip>视频遮挡</alarmmsg13_tip>
+			<alarmmsg14_tip>图像移动告警</alarmmsg14_tip>
+			<alarmmsg15_tip>IO由高到低触发</alarmmsg15_tip>
+			<alarmmsg16_tip>IO由低到高触发</alarmmsg16_tip>
+			<alarmmsg17_tip>空间不足告警</alarmmsg17_tip>
+			<alarmmsg18_tip>录像启动成功</alarmmsg18_tip>
+			<alarmmsg19_tip>录像结束</alarmmsg19_tip>
+			<alarmmsg20_tip>录像启动失败</alarmmsg20_tip>
+			<alarmmsg21_tip>告警类型结束标记</alarmmsg21_tip>
+			<alarmmsgother>未定义告警,代码：{code}</alarmmsgother>
+			
+			<err_preset_number_only1to255>预置点只能为1至255之间的整数！</err_preset_number_only1to255>
+			<preset_formaterror_tip>预置点格式错误！</preset_formaterror_tip>
+			<err_advpreset_timeiscross>此时间段与当前设置{presetinfo}有冲突！</err_advpreset_timeiscross>
+			<err_advpreset_timefromat_error>开始时间应该小于结束时间！</err_advpreset_timefromat_error>
+			<err_advpreset_fromat_error>输入格式错误，正确格式应如：{type}1#00:01-02:02!</err_advpreset_fromat_error>
+     			<err_advpreset_value_error>输入{presetval}错误，规则值应该为{type1}1至{type2}8之间整数！</err_advpreset_value_error>
+		
+			<connect_state_tip>连接状态</connect_state_tip>
+			<connect_state_connecting>正在连接中...</connect_state_connecting>
+			<connect_state_connect_faile>连接失败！</connect_state_connect_faile>
+			<connect_login_ok>登录成功！</connect_login_ok>
+			<connect_offlinestate_reqerror>设备不在线!</connect_offlinestate_reqerror>
+			
+		</jsinfo>
+		<ipc_html> 			
+			<str  fid="title"  attr="innerHTML" >网络摄像机</str>
+			<str  fid="#idStreamType"  attr="innerHTML" >播放码流</str>
+			<str  fid="#idCameraConfig"  attr="title" >配置</str>
+			<str  fid="#idPlayBack"  attr="title" >回放</str>
+			<str  fid="#idQuit"  attr="innerHTML" >退出</str>
+			<str  fid="#exitlogin"  attr="title" >退出</str>
+			<str  fid="#configipc"  attr="title" >配置</str>
+			<str  fid="#playback"  attr="title" >回放</str>      
+			<str  fid="#idSavePath"  attr="innerHTML" >存储路径</str>
+			<str  fid="#idChangeStream"  attr="title" >码流</str>
+			<str  fid="#idMainStream"  attr="innerHTML" >主码流</str>
+			<str  fid="#idSubStream"  attr="innerHTML" >子码流</str>
+			<str  fid="#idZoom"  attr="innerHTML" >缩放</str>
+			<str  fid="#idFocus"  attr="innerHTML" >聚焦</str>
+			<str  fid="#idIris"  attr="innerHTML" >巡视</str>
+			<str  fid="#idOrbit"  attr="innerHTML" >开启巡视</str>
+			<str  fid="#idOrbitStop"  attr="innerHTML" >停止巡视</str>
+			<str  fid="#idScanBegin"  attr="innerHTML" >线扫起点</str>
+			<str  fid="#idScanEnd"  attr="innerHTML" >线扫终点</str>
+			<str  fid="#idScanOn"  attr="innerHTML" >开启线扫</str>
+			<str  fid="#idScanOff"  attr="innerHTML" >关闭线扫</str>
+			<str  fid="#idBLCOff"  attr="innerHTML" >黑白模式</str>
+			<str  fid="#idBLCOn"  attr="innerHTML" >彩色模式</str>
+			<str  fid="#idMirrorOff"  attr="innerHTML" >镜像关</str>
+			<str  fid="#idMirrorOn"  attr="innerHTML" >镜像开</str>
+			<str  fid="#idFreezeOff"  attr="innerHTML" >图像冻结关</str>
+			<str  fid="#idFreezeOn"  attr="innerHTML" >图像冻结开</str>
+			<str  fid="#idStepsZOff"  attr="innerHTML" >数字变倍关</str>
+			<str  fid="#idStepsZOn"  attr="innerHTML" >数字变倍开</str>
+			<str  fid="#idScreenOff"  attr="innerHTML" >屏显关</str>
+			<str  fid="#idScreenOn"  attr="innerHTML" >屏显开</str>
+			<str  fid="#idMin_SenOff"  attr="innerHTML" >低照度关</str>
+			<str  fid="#idMin_SenOn"  attr="innerHTML" >低照度开</str>
+			<str  fid="#idILLOff"  attr="innerHTML" >背光补偿关</str>
+			<str  fid="#idILLOn"  attr="innerHTML" >背光补偿开</str>
+			<str  fid="#idCamReset"  attr="innerHTML" >相机复位</str>
+			<str  fid="#idCamOn"  attr="innerHTML" >相机开关</str>
+			<str  fid="#idAWBOn"  attr="innerHTML" >白平衡自动</str>
+			<str  fid="#idAWBOff"  attr="innerHTML" >白平衡手动</str>
+			<str  fid="#idRWB"  attr="innerHTML" >白平衡R</str>
+			<str  fid="#idBWB"  attr="innerHTML" >白平衡B</str>
+			<str  fid="#idMWB"  attr="innerHTML" >白平衡M</str>
+			<str  fid="#idGWB"  attr="innerHTML" >白平衡G</str>
+			<str  fid="#idInitSet"  attr="innerHTML" >初始设置</str>
+			<str  fid="#idMenu"  attr="innerHTML" >菜单</str>
+			<str  fid="#idTrackOn"  attr="innerHTML" >开启自动跟踪</str>
+			<str  fid="#idTrackOff"  attr="innerHTML" >关闭自动跟踪</str>
+			<str  fid="#idPathOn"  attr="innerHTML" >开始模式路径</str>
+			<str  fid="#idPathOff"  attr="innerHTML" >关闭模式路径</str>
+			<str  fid="#idBlcAuto"  attr="innerHTML" >彩色黑白自动</str>
+			<str  fid="#idWdrOff"  attr="innerHTML" >宽动态关</str>
+			<str  fid="#idWdrOn"  attr="innerHTML" >宽动态开</str>
+			<str  fid="#idPanSpeed"  attr="innerHTML" >水平速度</str>
+			<str  fid="#idTiltSpeed"  attr="innerHTML" >垂直速度</str>
+			<str  fid="#idAlarmType"  attr="innerHTML" >告警类型</str>
+			<str  fid="#idAlarmTime"  attr="innerHTML" >告警时间</str>
+			<str  fid="#PresetEdit"  attr="title" >预置点</str>
+			<str  fid="#AddPresetBtn"  attr="title" >添加</str>
+			<str  fid="#Del_PresetListChkBox"  attr="title" >预置点列表</str>
+			<str  fid="#DelPresetBtn"  attr="title" >刪除</str>
+			<str  fid="#Call_PresetListChkBox"  attr="title" >预置点列表</str>
+			<str  fid="#CallPresetBtn"  attr="title" >调用</str>
+			<str  fid="#zoomtele"  attr="title" >放大</str>
+			<str  fid="#zoomwide"  attr="title" >缩小</str>
+			<str  fid="#FFar"  attr="title" >远焦</str>
+			<str  fid="#FNear"  attr="title" >近焦</str>
+			<str  fid="#IrisOpen"  attr="title" >光圈开</str>
+			<str  fid="#IrisClose"  attr="title" >光圈关</str>
+			<str  fid="#Talkback"  attr="title" >对讲</str>
+			<str  fid="#RealRecord"  attr="title" >录像</str>
+			<str  fid="#SnapPicture"  attr="title" >抓拍</str>
+			<str  fid="#StopPlayReal"  attr="title" >停止播放</str>
+			<str  fid="#PlayRealVideo"  attr="title" >播放视频</str>
+			<str  fid="#left"  attr="title" >左</str>
+			<str  fid="#right"  attr="title" >右</str>
+			<str  fid="#up"  attr="title" >上</str>
+			<str  fid="#down"  attr="title" >下</str>
+			<str  fid="#left_up"  attr="title" >左上</str>
+			<str  fid="#right_up"  attr="title" >右上</str>
+			<str  fid="#left_down"  attr="title" >左下</str>
+			<str  fid="#right_down"  attr="title" >右下</str>
+			<str  fid="#back"  attr="title" >归位</str>
+			<str  fid="#exeadvancefunc"  attr="title" >执行</str>
+			<str  fid="#exeorbitscan"  attr="title" >执行</str>
+			<str  fid="#LoadPath"  attr="title" >单击修改存储路径</str>
+			<str  fid="#tip_alarmtitle"  attr="innerHTML" >告警信息</str>
+			<str  fid="#PlayerTips1"  attr="innerHTML" >速度值必须是</str>
+			<str  fid="#PlayerTips2"  attr="innerHTML" >速度值必须是整数</str>
+			<str  fid="#PlayerTips3"  attr="innerHTML" >预置点必须是</str>
+			<str  fid="#PlayerTips4"  attr="innerHTML" >预置点必须是整数</str>
+			<str  fid="#lusername"  attr="innerHTML" >用户账户</str>
+			<str  fid="#lpassword"  attr="innerHTML" >用户密码</str>
+			<str  fid="#tdLanguage"  attr="innerHTML" >选择语言</str>
+			<str  fid="#LoginButton"  attr="innerHTML" >登录</str>
+			<str  fid="#DownloadButton"  attr="innerHTML" >安装控件</str>
+			<str  fid="#BufferTick_tip"  attr="innerHTML" >缓冲</str>
+			<str  fid="#ptz_title_img"  attr="src" >images/play_08.gif</str>
+			<str  fid="#logo_img"  attr="src" >images/logo-zh-cn.jpg</str> 
+			<str  fid="#BGPTZControl"  attr="css" cssname="backgroundImage" >images/play_08.gif</str>
+			<str  fid="#BGlogo"  attr="css" cssname="backgroundImage" >images/logo_cn_null.gif</str>
+		</ipc_html>
+	</Resources>
+	
+	
+	
+	<Resources lan='zh-tw' name='繁體中文'>
+  		<jsinfo>			
+			<LoginTips1>帳號不能為空！</LoginTips1>
+			<LoginTips2>帳號或密碼錯誤！</LoginTips2>
+			<LoginTips3>登錄失敗！</LoginTips3>
+			<htmllogin_passisempty>密碼不能為空。</htmllogin_passisempty>
+			<htmllogin_ctrlversionerror1>控件與固件發佈版本不兼容，請重新下載安裝！</htmllogin_ctrlversionerror1>
+			<htmllogin_ctrlversionerror>控件與發佈固件不相同，建議重新下載安裝！</htmllogin_ctrlversionerror>
+			<networdk_connecterror>網絡連接錯誤，請檢測設備是否連接成功。</networdk_connecterror>
+			<networdk_connecterror>用戶登錄錯誤，請檢測用戶或密碼是否正確！</networdk_connecterror>
+			<userlogin_waitinfo>用戶登錄中...</userlogin_waitinfo>	
+			<PlayerTips1>速度值必須是</PlayerTips1>
+			<PlayerTips2>速度值必須是整數！</PlayerTips2>
+			<PlayerTips3>預置點必須是</PlayerTips3>
+			<PlayerTips4>预置点必須是整數！</PlayerTips4>	
+			
+			<SnapShot_error>抓圖失敗，請先播放設備視頻後再進行抓拍！</SnapShot_error> 
+			<record_pathfull>錄像失敗，存儲空間小於2G無法進行錄像！</record_pathfull>
+			<record_notplayer>錄像失敗，請先播放然後再進行錄像！</record_notplayer>
+			
+
+
+			<alarmmsg0_tip>告警開始</alarmmsg0_tip>
+			<alarmmsg1_tip>設備下線</alarmmsg1_tip>
+			<alarmmsg2_tip>設備上線</alarmmsg2_tip>
+			<alarmmsg3_tip>USB接上</alarmmsg3_tip>
+			<alarmmsg4_tip>USB拔出</alarmmsg4_tip>
+			<alarmmsg5_tip>SD卡1接上</alarmmsg5_tip>
+			<alarmmsg6_tip>SD卡1拔出</alarmmsg6_tip>
+			<alarmmsg7_tip>SD卡2接上</alarmmsg7_tip>
+			<alarmmsg8_tip>SD卡2拔出</alarmmsg8_tip>
+			<alarmmsg9_tip>USB存儲空間不足</alarmmsg9_tip>
+			<alarmmsg10_tip>SD卡1存儲空間不足</alarmmsg10_tip>
+			<alarmmsg11_tip>SD卡2存儲空間不足</alarmmsg11_tip>
+			<alarmmsg12_tip>視頻丟失</alarmmsg12_tip>
+			<alarmmsg13_tip>視頻遮擋</alarmmsg13_tip>
+			<alarmmsg14_tip>圖像移動告警</alarmmsg14_tip>
+			<alarmmsg15_tip>IO由高到低觸發</alarmmsg15_tip>
+			<alarmmsg16_tip>IO由低到高觸發</alarmmsg16_tip>
+			<alarmmsg17_tip>空間不足告警</alarmmsg17_tip>
+			<alarmmsg18_tip>錄像啟動成功</alarmmsg18_tip>
+			<alarmmsg19_tip>錄像結束</alarmmsg19_tip>
+			<alarmmsg20_tip>錄像啟動失敗</alarmmsg20_tip>
+			<alarmmsg21_tip>告警類型結束標記</alarmmsg21_tip>
+			<alarmmsgother>未定義告警，代碼：{code}</alarmmsgother>
+			
+			<err_preset_number_only1to255>預置點只能是1至255之間的整數！</err_preset_number_only1to255>
+			<preset_formaterror_tip>預置點格式錯誤！</preset_formaterror_tip>
+			<err_advpreset_timeiscross>此時間段與當前設置{presetinfo}有衝突！</err_advpreset_timeiscross>
+			<err_advpreset_timefromat_error>開始時間應該小於結束時間！</err_advpreset_timefromat_error>
+			<err_advpreset_fromat_error>輸入格式錯誤，正確格式應如：{type}1#00:01-02:02!</err_advpreset_fromat_error>
+			<err_advpreset_value_error>輸入{presetval}錯誤，规则值應該為{type1}1至{type2}8之間整數！</err_advpreset_value_error>
+
+      			<connect_state_tip>連接狀態</connect_state_tip>
+			<connect_state_connecting>正在連接中...</connect_state_connecting>
+			<connect_state_connect_faile>連接失敗！</connect_state_connect_faile>
+			<connect_login_ok>登錄成功！</connect_login_ok>
+			<connect_offlinestate_reqerror>設備不在線!</connect_offlinestate_reqerror>
+			
+		</jsinfo>
+		<ipc_html> 
+			<str  fid="title"  attr="innerHTML" >網絡攝像機</str>
+			<str  fid="#idStreamType"  attr="innerHTML" >影音類型</str>
+			<str  fid="#idCameraConfig"  attr="title" >配置</str>
+			<str  fid="#idPlayBack"  attr="title" >回放</str>
+			<str  fid="#idQuit"  attr="innerHTML" >退出</str>
+			<str  fid="#exitlogin"  attr="title" >退出</str>
+			<str  fid="#configipc"  attr="title" >配置</str>
+			<str  fid="#playback"  attr="title" >回放</str>      
+			<str  fid="#idSavePath"  attr="innerHTML" >存儲路徑</str>
+			<str  fid="#idChangeStream"  attr="title" >碼流</str>
+			<str  fid="#idMainStream"  attr="innerHTML" >主模式</str>
+			<str  fid="#idSubStream"  attr="innerHTML" >子模式</str>
+			<str  fid="#idZoom"  attr="innerHTML" >縮放</str>
+			<str  fid="#idFocus"  attr="innerHTML" >聚焦</str>
+			<str  fid="#idIris"  attr="innerHTML" >巡視</str>
+			<str  fid="#idOrbit"  attr="innerHTML" >開啟巡視</str>
+			<str  fid="#idOrbitStop"  attr="innerHTML" >停止巡視</str>
+			<str  fid="#idScanBegin"  attr="innerHTML" >線掃起點</str>
+			<str  fid="#idScanEnd"  attr="innerHTML" >線掃終點</str>
+			<str  fid="#idScanOn"  attr="innerHTML" >開啟線掃</str>
+			<str  fid="#idScanOff"  attr="innerHTML" >關閉線掃</str>
+			<str  fid="#idBLCOff"  attr="innerHTML" >黑白模式</str>
+			<str  fid="#idBLCOn"  attr="innerHTML" >彩色模式</str>
+			<str  fid="#idMirrorOff"  attr="innerHTML" >鏡像關</str>
+			<str  fid="#idMirrorOn"  attr="innerHTML" >鏡像開</str>
+			<str  fid="#idFreezeOff"  attr="innerHTML" >圖像凍結關</str>
+			<str  fid="#idFreezeOn"  attr="innerHTML" >圖像凍結開</str>
+			<str  fid="#idStepsZOff"  attr="innerHTML" >數字變倍關</str>
+			<str  fid="#idStepsZOn"  attr="innerHTML" >數字變倍開</str>
+			<str  fid="#idScreenOff"  attr="innerHTML" >屏顯關</str>
+			<str  fid="#idScreenOn"  attr="innerHTML" >屏顯開</str>
+			<str  fid="#idMin_SenOff"  attr="innerHTML" >低照度關</str>
+			<str  fid="#idMin_SenOn"  attr="innerHTML" >低照度開</str>
+			<str  fid="#idILLOff"  attr="innerHTML" >背光補償關</str>
+			<str  fid="#idILLOn"  attr="innerHTML" >背光補償開</str>
+			<str  fid="#idCamReset"  attr="innerHTML" >相機複位</str>
+			<str  fid="#idCamOn"  attr="innerHTML" >相機開關</str>
+			<str  fid="#idAWBOn"  attr="innerHTML" >白平衡自動</str>
+			<str  fid="#idAWBOff"  attr="innerHTML" >白平衡手動</str>
+			<str  fid="#idRWB"  attr="innerHTML" >白平衡R</str>
+			<str  fid="#idBWB"  attr="innerHTML" >白平衡B</str>
+			<str  fid="#idMWB"  attr="innerHTML" >白平衡M</str>
+			<str  fid="#idGWB"  attr="innerHTML" >白平衡G</str>
+			<str  fid="#idInitSet"  attr="innerHTML" >初始設置</str>
+			<str  fid="#idMenu"  attr="innerHTML" >菜單</str>
+			<str  fid="#idTrackOn"  attr="innerHTML" >開啟自動跟蹤</str>
+			<str  fid="#idTrackOff"  attr="innerHTML" >關閉自動跟蹤</str>
+			<str  fid="#idPathOn"  attr="innerHTML" >開啟模式路徑</str>
+			<str  fid="#idPathOff"  attr="innerHTML" >關閉模式路徑</str>
+			<str  fid="#idBlcAuto"  attr="innerHTML" >彩色黑白自動</str>
+			<str  fid="#idWdrOff"  attr="innerHTML" >寬動態關</str>
+			<str  fid="#idWdrOn"  attr="innerHTML" >寬動態開</str>
+			<str  fid="#idPanSpeed"  attr="innerHTML" >水平速度</str>
+			<str  fid="#idTiltSpeed"  attr="innerHTML" >垂直速度</str>
+			<str  fid="#idAlarmType"  attr="innerHTML" >告警類型</str>
+			<str  fid="#idAlarmTime"  attr="innerHTML" >告警時間</str>
+			<str  fid="#PresetEdit"  attr="title" >預置點</str>
+			<str  fid="#AddPresetBtn"  attr="title" >添加</str>
+			<str  fid="#Del_PresetListChkBox"  attr="title" >預置點列表</str>
+			<str  fid="#DelPresetBtn"  attr="title" >刪除</str>
+			<str  fid="#Call_PresetListChkBox"  attr="title" >預置點列表</str>
+			<str  fid="#CallPresetBtn"  attr="title" >調用</str>
+			<str  fid="#zoomtele"  attr="title" >放大</str>
+			<str  fid="#zoomwide"  attr="title" >縮小</str>
+			<str  fid="#FFar"  attr="title" >遠焦</str>
+			<str  fid="#FNear"  attr="title" >近焦</str>
+			<str  fid="#IrisOpen"  attr="title" >光圈開</str>
+			<str  fid="#IrisClose"  attr="title" >光圈關</str>
+			<str  fid="#Talkback"  attr="title" >對講</str>
+			<str  fid="#RealRecord"  attr="title" >錄像</str>
+			<str  fid="#SnapPicture"  attr="title" >抓拍</str>
+			<str  fid="#StopPlayReal"  attr="title" >停止播放</str>
+			<str  fid="#PlayRealVideo"  attr="title" >播放視頻</str>
+			<str  fid="#left"  attr="title" >左</str>
+			<str  fid="#right"  attr="title" >右</str>
+			<str  fid="#up"  attr="title" >上</str>
+			<str  fid="#down"  attr="title" >下</str>
+			<str  fid="#left_up"  attr="title" >左上</str>
+			<str  fid="#right_up"  attr="title" >右上</str>
+			<str  fid="#left_down"  attr="title" >左下</str>
+			<str  fid="#right_down"  attr="title" >右下</str>
+			<str  fid="#back"  attr="title" >歸位</str>
+			<str  fid="#exeadvancefunc"  attr="title" >執行</str>
+			<str  fid="#exeorbitscan"  attr="title" >執行</str>
+			<str  fid="#LoadPath"  attr="title" >修改檔案存儲目錄</str>
+			<str  fid="#tip_alarmtitle"  attr="innerHTML" >告警信息</str>
+			<str  fid="#PlayerTips1"  attr="innerHTML" >速度值必須是</str>
+			<str  fid="#PlayerTips2"  attr="innerHTML" >速度值必須是整數！</str>
+			<str  fid="#PlayerTips3"  attr="innerHTML" >預置點必須是</str>
+			<str  fid="#PlayerTips4"  attr="innerHTML" >預置點必須是整數！</str>
+			<str  fid="#lusername"  attr="innerHTML" >用戶帳戶</str>
+			<str  fid="#lpassword"  attr="innerHTML" >用戶密碼</str>
+			<str  fid="#tdLanguage"  attr="innerHTML" >選擇語言</str>
+			<str  fid="#LoginButton"  attr="innerHTML" >登錄</str>
+			<str  fid="#DownloadButton"  attr="innerHTML" >安裝控件</str>
+			<str  fid="#logo_img"  attr="src" >images/logo-zh-tw.jpg</str> 
+			<str  fid="#BufferTick_tip"  attr="innerHTML" >緩冲</str>
+			<str  fid="#ptz_title_img"  attr="src" >images/play_08.gif</str>
+			<str  fid="#BGPTZControl"  attr="css" cssname="backgroundImage" >images/play_08.gif</str>
+			<str  fid="#BGlogo"  attr="css" cssname="backgroundImage" >images/logo_tw_null.gif</str>
+		</ipc_html>
+  </Resources>
+  
+  <Resources lan='en-us' name='English'>
+  		<jsinfo>			
+			<LoginTips1>The username can not be null!</LoginTips1>
+			<LoginTips2>Username or password is error!</LoginTips2>
+			<LoginTips3>Login failed!</LoginTips3>
+			<htmllogin_passisempty>The password can not be null!</htmllogin_passisempty>
+			<htmllogin_ctrlversionerror1>Control is not compatible with firmware, please reinstall!</htmllogin_ctrlversionerror1>
+			<htmllogin_ctrlversionerror>Control is not compatible with firmware, recommend reinstalling!</htmllogin_ctrlversionerror>
+			<networdk_connecterror>Network connect error, please check!</networdk_connecterror>
+			<networdk_connecterror>Login failed，please check the username or password!</networdk_connecterror>
+			<userlogin_waitinfo>User Login...</userlogin_waitinfo>	
+			<PlayerTips1>Speed value must be</PlayerTips1>
+			<PlayerTips2>Speed value must be integer!</PlayerTips2>
+			<PlayerTips3>Preset number must be</PlayerTips3>
+			<PlayerTips4>Preset number must be integer!</PlayerTips4>	
+			
+			<SnapShot_error>Snapshot failed, please play video first!</SnapShot_error> 
+			<record_pathfull>Record failed, can not video if storage space less than 2G!</record_pathfull>
+			<record_notplayer>Record failed, please play video first!</record_notplayer>
+			
+			
+			
+			<EVNET_INITP2P_OK>Initialize P2P successfully, connecting...</EVNET_INITP2P_OK>
+			<EVNET_INITP2P_ERROR>Initialize P2P failed!</EVNET_INITP2P_ERROR>			
+			<EVENT_START_CONNECT_DEVICE>Connecting..</EVENT_START_CONNECT_DEVICE>
+			<EVENT_START_CONNECT_DEVICE_ERROR>Connect failed!</EVENT_START_CONNECT_DEVICE_ERROR>
+			<EVENT_P2PSERVER_LOGIN_OK>Login P2P server successfully!</EVENT_P2PSERVER_LOGIN_OK>
+			<EVENT_P2PSERVER_LOGOUT>Login P2P server failed!</EVENT_P2PSERVER_LOGOUT>
+			<EVENT_P2PERROR_EVNETINFO>P2P server return error code:{error}!</EVENT_P2PERROR_EVNETINFO>
+			<EVENT_P2PCONNECT_DEVICEOK>Connect device successfully!</EVENT_P2PCONNECT_DEVICEOK>
+			<EVENT_P2PCONNECT_CLOSE>Device disconnect!</EVENT_P2PCONNECT_CLOSE>
+			<EVENT_P2P_EXIT_CONNECT>P2P server has been quit!</EVENT_P2P_EXIT_CONNECT>
+
+
+			<alarmmsg0_tip>Start Alarm</alarmmsg0_tip>
+			<alarmmsg1_tip>Device Offline</alarmmsg1_tip>
+			<alarmmsg2_tip>Device Online</alarmmsg2_tip>
+			<alarmmsg3_tip>USB Connect-up</alarmmsg3_tip>
+			<alarmmsg4_tip>Unplug USB</alarmmsg4_tip>
+			<alarmmsg5_tip>SD1 Connect-up</alarmmsg5_tip>
+			<alarmmsg6_tip>Unplug SD1</alarmmsg6_tip>
+			<alarmmsg7_tip>SD2 Connect-up</alarmmsg7_tip>
+			<alarmmsg8_tip>Unplug SD2</alarmmsg8_tip>
+			<alarmmsg9_tip>USB has no enough storage space</alarmmsg9_tip>
+			<alarmmsg10_tip>SD1 has no enough storage space</alarmmsg10_tip>
+			<alarmmsg11_tip>SD2 has no enough storage space</alarmmsg11_tip>
+			<alarmmsg12_tip>Video Lost</alarmmsg12_tip>
+			<alarmmsg13_tip>Tampering Alarm</alarmmsg13_tip>
+			<alarmmsg14_tip>Motion Detection Alarm</alarmmsg14_tip>
+			<alarmmsg15_tip>IO alarm from high to low</alarmmsg15_tip>
+			<alarmmsg16_tip>IO alarm from low to high</alarmmsg16_tip>
+			<alarmmsg17_tip>Storage space not enough</alarmmsg17_tip>
+			<alarmmsg18_tip>Start video successfully</alarmmsg18_tip>
+			<alarmmsg19_tip>Finishing recording</alarmmsg19_tip>
+			<alarmmsg20_tip>Start record failed</alarmmsg20_tip>
+			<alarmmsg21_tip>Alarm type end flag</alarmmsg21_tip>
+			<alarmmsgother>Undefined alarm, code:{code}</alarmmsgother>
+			
+			<err_preset_number_only1to255>Preset number only can be integer between 1 to 255!</err_preset_number_only1to255>
+			<preset_formaterror_tip>Preset number format error!</preset_formaterror_tip>
+			<err_advpreset_timeiscross>The time quantum is conflict with current set{presetinfo}!</err_advpreset_timeiscross>
+			<err_advpreset_timefromat_error>Start time must be earlier than end time!</err_advpreset_timefromat_error>
+			<err_advpreset_fromat_error>Input format error, correct format as:{type}1#00:01-02:02!</err_advpreset_fromat_error>
+			<err_advpreset_value_error>The {presetval} is error, correct value must be integer between {type1}1 to {type2}8! </err_advpreset_value_error>
+       
+			<connect_state_tip>connection status</connect_state_tip>
+			<connect_state_connecting>connecting...</connect_state_connecting>
+			<connect_state_connect_faile>Connect failed!</connect_state_connect_faile>
+			<connect_login_ok>Login successfully!</connect_login_ok>
+			<connect_offlinestate_reqerror>Device offline!</connect_offlinestate_reqerror>
+			
+		</jsinfo>
+		<ipc_html> 
+			<str  fid="title"  attr="innerHTML" >IP Camera</str>
+			<str  fid="#idStreamType"  attr="innerHTML" >Stream</str>
+			<str  fid="#idCameraConfig"  attr="title" >Config</str>
+			<str  fid="#idPlayBack"  attr="title" >Playback</str>
+			<str  fid="#idQuit"  attr="innerHTML" >Quit</str>
+			<str  fid="#exitlogin"  attr="title" >Quit</str>
+			<str  fid="#configipc"  attr="title" >Config</str>
+			<str  fid="#playback"  attr="title" >playback</str>      
+			<str  fid="#idSavePath"  attr="innerHTML" >SavePath</str>
+			<str  fid="#idChangeStream"  attr="title" >Stream</str>
+			<str  fid="#idMainStream"  attr="innerHTML" >Main Stream</str>
+			<str  fid="#idSubStream"  attr="innerHTML" >Sub Stream</str>
+			<str  fid="#idZoom"  attr="innerHTML" >Zoom</str>
+			<str  fid="#idFocus"  attr="innerHTML" >Focus</str>
+			<str  fid="#idIris"  attr="innerHTML" >Orbit</str>
+			<str  fid="#idOrbit"  attr="innerHTML" >start orbit</str>
+			<str  fid="#idOrbitStop"  attr="innerHTML" >Stop Orbit</str>
+			<str  fid="#idScanBegin"  attr="innerHTML" >Scan Start Point</str>
+			<str  fid="#idScanEnd"  attr="innerHTML" >Scan Stop Point</str>
+			<str  fid="#idScanOn"  attr="innerHTML" >Start Scan</str>
+			<str  fid="#idScanOff"  attr="innerHTML" >Stop Scan</str>
+			<str  fid="#idBLCOff"  attr="innerHTML" >Black/White</str>
+			<str  fid="#idBLCOn"  attr="innerHTML" >Color</str>
+			<str  fid="#idMirrorOff"  attr="innerHTML" >Mirror Off</str>
+			<str  fid="#idMirrorOn"  attr="innerHTML" >Mirror On</str>
+			<str  fid="#idFreezeOff"  attr="innerHTML" >Freeze Off</str>
+			<str  fid="#idFreezeOn"  attr="innerHTML" >Freeze On</str>
+			<str  fid="#idStepsZOff"  attr="innerHTML" >Steps Off</str>
+			<str  fid="#idStepsZOn"  attr="innerHTML" >Steps On</str>
+			<str  fid="#idScreenOff"  attr="innerHTML" >Screen Off</str>
+			<str  fid="#idScreenOn"  attr="innerHTML" >Screen On</str>
+			<str  fid="#idMin_SenOff"  attr="innerHTML" >Lumen Off</str>
+			<str  fid="#idMin_SenOn"  attr="innerHTML" >Lumen On</str>
+			<str  fid="#idILLOff"  attr="innerHTML" >ILL Off</str>
+			<str  fid="#idILLOn"  attr="innerHTML" >ILL On</str>
+			<str  fid="#idCamReset"  attr="innerHTML" >Camera Reset</str>
+			<str  fid="#idCamOn"  attr="innerHTML" >Camera Switch</str>
+			<str  fid="#idAWBOn"  attr="innerHTML" >B/W Manual</str>
+			<str  fid="#idAWBOff"  attr="innerHTML" >B/W Auto</str>
+			<str  fid="#idRWB"  attr="innerHTML" >WB R</str>
+			<str  fid="#idBWB"  attr="innerHTML" >WB B</str>
+			<str  fid="#idMWB"  attr="innerHTML" >WB M</str>
+			<str  fid="#idGWB"  attr="innerHTML" >WB G</str>
+			<str  fid="#idInitSet"  attr="innerHTML" >Initial Set</str>
+			<str  fid="#idMenu"  attr="innerHTML" >Menu</str>
+			<str  fid="#idTrackOn"  attr="innerHTML" >Track On</str>
+			<str  fid="#idTrackOff"  attr="innerHTML" >Track Off</str>
+			<str  fid="#idPathOn"  attr="innerHTML" >Path On</str>
+			<str  fid="#idPathOff"  attr="innerHTML" >Path Off</str>
+			<str  fid="#idBlcAuto"  attr="innerHTML" >B/W Color Auto</str>
+			<str  fid="#idWdrOff"  attr="innerHTML" >WDR Off</str>
+			<str  fid="#idWdrOn"  attr="innerHTML" >WDR On</str>
+			<str  fid="#idPanSpeed"  attr="innerHTML" >Pan Speed</str>
+			<str  fid="#idTiltSpeed"  attr="innerHTML" >Tilt Speed</str>
+			<str  fid="#idAlarmType"  attr="innerHTML" >Alarm type</str>
+			<str  fid="#idAlarmTime"  attr="innerHTML" >Alarm Time</str>
+			<str  fid="#PresetEdit"  attr="title" >Preset Number</str>
+			<str  fid="#AddPresetBtn"  attr="title" >Add</str>
+			<str  fid="#Del_PresetListChkBox"  attr="title" >Preset List</str>
+			<str  fid="#DelPresetBtn"  attr="title" >Delete</str>
+			<str  fid="#Call_PresetListChkBox"  attr="title" >Preset List</str>
+			<str  fid="#CallPresetBtn"  attr="title" >Invoke</str>
+			<str  fid="#zoomtele"  attr="title" >Zoom In</str>
+			<str  fid="#zoomwide"  attr="title" >Zoom Out</str>
+			<str  fid="#FFar"  attr="title" >Focus Far</str>
+			<str  fid="#FNear"  attr="title" >Focus Near</str>
+			<str  fid="#IrisOpen"  attr="title" >Iris Open</str>
+			<str  fid="#IrisClose"  attr="title" >Iris Close</str>
+			<str  fid="#Talkback"  attr="title" >Talkback</str>
+			<str  fid="#RealRecord"  attr="title" >Video</str>
+			<str  fid="#SnapPicture"  attr="title" >Snapshot</str>
+			<str  fid="#StopPlayReal"  attr="title" >Stop</str>
+			<str  fid="#PlayRealVideo"  attr="title" >Play</str>
+			<str  fid="#left"  attr="title" >Left</str>
+			<str  fid="#right"  attr="title" >Right</str>
+			<str  fid="#up"  attr="title" >Up</str>
+			<str  fid="#down"  attr="title" >Down</str>
+			<str  fid="#left_up"  attr="title" >Left Up</str>
+			<str  fid="#right_up"  attr="title" >Right Up</str>
+			<str  fid="#left_down"  attr="title" >Left Down</str>
+			<str  fid="#right_down"  attr="title" >Right Down</str>
+			<str  fid="#back"  attr="title" >Reset</str>
+			<str  fid="#exeadvancefunc"  attr="title" >Execute</str>
+			<str  fid="#exeorbitscan"  attr="title" >Execute</str>
+			<str  fid="#LoadPath"  attr="title" >Click to Change Save Path</str>
+			<str  fid="#tip_alarmtitle"  attr="innerHTML" >Alarm Info.</str>
+			<str  fid="#PlayerTips1"  attr="innerHTML" >Speed value must be</str>
+			<str  fid="#PlayerTips2"  attr="innerHTML" >Speed value must be integer!</str>
+			<str  fid="#PlayerTips3"  attr="innerHTML" >Preset number must be</str>
+			<str  fid="#PlayerTips4"  attr="innerHTML" >Preset number must be integer!</str>
+			<str  fid="#lusername"  attr="innerHTML" >Username</str>
+			<str  fid="#lpassword"  attr="innerHTML" >Password</str>
+			<str  fid="#tdLanguage"  attr="innerHTML" >Language</str>
+			<str  fid="#LoginButton"  attr="innerHTML" >Login</str>
+			<str  fid="#DownloadButton"  attr="innerHTML" >Install Control</str>
+			<str  fid="#logo_img"  attr="src" >images/logo-en-us.jpg</str> 
+			<str  fid="#BufferTick_tip"  attr="innerHTML" >Buffer</str>
+			<str  fid="#ptz_title_img"  attr="src" >images/play_08_en.gif</str>
+			<str  fid="#BGPTZControl"  attr="css" cssname="backgroundImage" >url(/images/play_08_en.gif);</str>
+			<str  fid="#BGlogo"   attr="css" cssname="backgroundImage"  >/images/logo_en_null.gif</str>
+		</ipc_html>
+  </Resources>
+
+
+
+  <Resources lan='tr-tr' name='Türkçe'>
+    <jsinfo>
+      <LoginTips1>Kullanıcı Adı boş Olamaz!</LoginTips1>
+      <LoginTips2>Kullanıcı adı Şifre hatalı!</LoginTips2>
+      <LoginTips3>Giriş Bşarısız!</LoginTips3>
+      <htmllogin_passisempty>Şifre Bölümü boş olamaz!</htmllogin_passisempty>
+      <htmllogin_ctrlversionerror1>Yazılım sürümü uyumlu değil ,kontrol ediniz,yeni sürüm yükletiniz!</htmllogin_ctrlversionerror1>
+      <htmllogin_ctrlversionerror>Yazılım sürümü uyumlu değil ,kontrol ediniz,yeni sürüm yükletiniz!</htmllogin_ctrlversionerror>
+      <networdk_connecterror>Network Bağlantısı hatalı,Kontrol edermisiniz!</networdk_connecterror>
+      <networdk_connecterror>Giriş başarısız£¬Kullanıcı adı ve şifre kontrol ediniz!</networdk_connecterror>
+      <userlogin_waitinfo>Giriş Yapılıyor...</userlogin_waitinfo>
+      <PlayerTips1>Akış hızı Belirtin</PlayerTips1>
+      <PlayerTips2>Akış Hızı tamsayı olmalıdır!</PlayerTips2>
+      <PlayerTips3>Preset Numarası Belirtin</PlayerTips3>
+      <PlayerTips4>Preset No Tamsayı olamalıdır!</PlayerTips4>
+
+      <SnapShot_error>Foto alınamadı, önce Videoyu onatınız!</SnapShot_error>
+      <record_pathfull>Kayıt başarısız,Video kayıtı için 2GB depolama alanı olmalıdır!</record_pathfull>
+      <record_notplayer>Kayıt başarısız,Önce video açınız!</record_notplayer>
+
+
+
+      <EVNET_INITP2P_OK>P2P Kurulum Başarılı, Bağlanıyorum...</EVNET_INITP2P_OK>
+      <EVNET_INITP2P_ERROR>P2P Başarısız!</EVNET_INITP2P_ERROR>
+      <EVENT_START_CONNECT_DEVICE>Bağlanıyorum..</EVENT_START_CONNECT_DEVICE>
+      <EVENT_START_CONNECT_DEVICE_ERROR>Bağlantı başarısız!</EVENT_START_CONNECT_DEVICE_ERROR>
+      <EVENT_P2PSERVER_LOGIN_OK>P2P Sunuya bağlantı başşarılı!</EVENT_P2PSERVER_LOGIN_OK>
+      <EVENT_P2PSERVER_LOGOUT>P2P Girişi başarısız!</EVENT_P2PSERVER_LOGOUT>
+      <EVENT_P2PERROR_EVNETINFO>P2P Sunucu hata verdi H.Kodu:{error}!</EVENT_P2PERROR_EVNETINFO>
+      <EVENT_P2PCONNECT_DEVICEOK>Cihaz bağlantısı başarılı!</EVENT_P2PCONNECT_DEVICEOK>
+      <EVENT_P2PCONNECT_CLOSE>Cihaz Bağlı değil!</EVENT_P2PCONNECT_CLOSE>
+      <EVENT_P2P_EXIT_CONNECT>P2P Sunucudan Çıkldı!</EVENT_P2P_EXIT_CONNECT>
+
+
+      <alarmmsg0_tip>Alarm Başlat</alarmmsg0_tip>
+      <alarmmsg1_tip>Cihaz Kapalı</alarmmsg1_tip>
+      <alarmmsg2_tip>Cihaz Bağlı</alarmmsg2_tip>
+      <alarmmsg3_tip>USB Bağlı</alarmmsg3_tip>
+      <alarmmsg4_tip>USB Çıkarıldı</alarmmsg4_tip>
+      <alarmmsg5_tip>SD1 Bağlı</alarmmsg5_tip>
+      <alarmmsg6_tip>SD1 Çıkarıldı</alarmmsg6_tip>
+      <alarmmsg7_tip>SD2 Bağlı</alarmmsg7_tip>
+      <alarmmsg8_tip>SD2 Çıkarıldı</alarmmsg8_tip>
+      <alarmmsg9_tip>USB Depolama alanı yetersiz</alarmmsg9_tip>
+      <alarmmsg10_tip>SD1 Depolama alanı yetersiz</alarmmsg10_tip>
+      <alarmmsg11_tip>SD2 Depolama alanı yetersiz</alarmmsg11_tip>
+      <alarmmsg12_tip>Video Yok</alarmmsg12_tip>
+      <alarmmsg13_tip>Tamper Alarm</alarmmsg13_tip>
+      <alarmmsg14_tip>Hareket Alarm</alarmmsg14_tip>
+      <alarmmsg15_tip>IO alarm Yüksek-düşük</alarmmsg15_tip>
+      <alarmmsg16_tip>IO alarm Düşük-Yüksek</alarmmsg16_tip>
+      <alarmmsg17_tip>Depolama alanaı Yetrsiz</alarmmsg17_tip>
+      <alarmmsg18_tip>Video başlatılma onaylandı</alarmmsg18_tip>
+      <alarmmsg19_tip>Kayıt durdurdu</alarmmsg19_tip>
+      <alarmmsg20_tip>Kayıt başlamadı</alarmmsg20_tip>
+      <alarmmsg21_tip>Alarm Tipi Son</alarmmsg21_tip>
+      <alarmmsgother>Belirsiz alarm, Kod:{code}</alarmmsgother>
+
+      <err_preset_number_only1to255>Preset Numarası hatalı lütfen 1 ile 255 arası belirleyin!</err_preset_number_only1to255>
+      <preset_formaterror_tip>Preset numarası formatı hatalı!</preset_formaterror_tip>
+      <err_advpreset_timeiscross>Zamanlarda Çakışma algıladım kontrol edermisiniz Ayarlar{presetinfo}!</err_advpreset_timeiscross>
+      <err_advpreset_timefromat_error>Başlangıç ile bitiş sürelerini kontrol et!</err_advpreset_timefromat_error>
+      <err_advpreset_fromat_error>Giriş Format hatalı,Normal format tip:{type}1#00:01-02:02!</err_advpreset_fromat_error>
+      <err_advpreset_value_error>Bu {presetval}hatalı,Normali  Tamsayı Olamlıdır {type1}1 ile{type2}8! </err_advpreset_value_error>
+
+      <connect_state_tip>Bağlantı durumu</connect_state_tip>
+      <connect_state_connecting>Bağlanıyorum...</connect_state_connecting>
+      <connect_state_connect_faile>Bağlanamadım!</connect_state_connect_faile>
+      <connect_login_ok>Giriş Başarılı!</connect_login_ok>
+      <connect_offlinestate_reqerror>Cihaz Kapalı!</connect_offlinestate_reqerror>
+
+    </jsinfo>
+    <ipc_html>
+      <str  fid="title"  attr="innerHTML" >IP Kamera</str>
+      <str  fid="#idStreamType"  attr="innerHTML" >Stream</str>
+      <str  fid="#idCameraConfig"  attr="title" >Ayarlar</str>
+      <str  fid="#idPlayBack"  attr="title" >Oynat</str>
+      <str  fid="#idQuit"  attr="innerHTML" >Çık</str>
+      <str  fid="#exitlogin"  attr="title" >Çık</str>
+      <str  fid="#configipc"  attr="title" >Ayarlar</str>
+      <str  fid="#playback"  attr="title" >Oynat</str>
+      <str  fid="#idSavePath"  attr="innerHTML" >Kaydet</str>
+      <str  fid="#idChangeStream"  attr="title" >Stream</str>
+      <str  fid="#idMainStream"  attr="innerHTML" >Main Stream</str>
+      <str  fid="#idSubStream"  attr="innerHTML" >Sub Stream</str>
+      <str  fid="#idZoom"  attr="innerHTML" >Zoom</str>
+      <str  fid="#idFocus"  attr="innerHTML" >Focus</str>
+      <str  fid="#idIris"  attr="innerHTML" >Orbit</str>
+      <str  fid="#idOrbit"  attr="innerHTML" >Orbit Başlat</str>
+      <str  fid="#idOrbitStop"  attr="innerHTML" >Orbit Dur</str>
+      <str  fid="#idScanBegin"  attr="innerHTML" >Tarama başlat</str>
+      <str  fid="#idScanEnd"  attr="innerHTML" >Tarama Durdur</str>
+      <str  fid="#idScanOn"  attr="innerHTML" >Tarama başlat</str>
+      <str  fid="#idScanOff"  attr="innerHTML" >Tarama Yok</str>
+      <str  fid="#idBLCOff"  attr="innerHTML" >Siyah/beyaz</str>
+      <str  fid="#idBLCOn"  attr="innerHTML" >Renkli</str>
+      <str  fid="#idMirrorOff"  attr="innerHTML" >Ayna Kapalı</str>
+      <str  fid="#idMirrorOn"  attr="innerHTML" >Ayna Aç</str>
+      <str  fid="#idFreezeOff"  attr="innerHTML" >Freeze Kapat</str>
+      <str  fid="#idFreezeOn"  attr="innerHTML" >Freeze Aç</str>
+      <str  fid="#idStepsZOff"  attr="innerHTML" >Hareket Kapat</str>
+      <str  fid="#idStepsZOn"  attr="innerHTML" >Hareket Aç</str>
+      <str  fid="#idScreenOff"  attr="innerHTML" >Ekran Kapat</str>
+      <str  fid="#idScreenOn"  attr="innerHTML" >Ekran Aç</str>
+      <str  fid="#idMin_SenOff"  attr="innerHTML" >Lumen Kapat</str>
+      <str  fid="#idMin_SenOn"  attr="innerHTML" >Lumen Aç</str>
+      <str  fid="#idILLOff"  attr="innerHTML" >ILL Kapat</str>
+      <str  fid="#idILLOn"  attr="innerHTML" >ILL Aç</str>
+      <str  fid="#idCamReset"  attr="innerHTML" >Kamera Reset</str>
+      <str  fid="#idCamOn"  attr="innerHTML" >Kamera Çevir</str>
+      <str  fid="#idAWBOn"  attr="innerHTML" >s/b Manuel</str>
+      <str  fid="#idAWBOff"  attr="innerHTML" >s/b Oto</str>
+      <str  fid="#idRWB"  attr="innerHTML" >WB R</str>
+      <str  fid="#idBWB"  attr="innerHTML" >WB B</str>
+      <str  fid="#idMWB"  attr="innerHTML" >WB M</str>
+      <str  fid="#idGWB"  attr="innerHTML" >WB G</str>
+      <str  fid="#idInitSet"  attr="innerHTML" >İlk Ayarlar</str>
+      <str  fid="#idMenu"  attr="innerHTML" >Menü</str>
+      <str  fid="#idTrackOn"  attr="innerHTML" >Track Aç</str>
+      <str  fid="#idTrackOff"  attr="innerHTML" >Track kapat</str>
+      <str  fid="#idPathOn"  attr="innerHTML" >Yol Aç</str>
+      <str  fid="#idPathOff"  attr="innerHTML" >Yol Kapat</str>
+      <str  fid="#idBlcAuto"  attr="innerHTML" >S/B Renkli Oto</str>
+      <str  fid="#idWdrOff"  attr="innerHTML" >WDR Kapat</str>
+      <str  fid="#idWdrOn"  attr="innerHTML" >WDR Aç</str>
+      <str  fid="#idPanSpeed"  attr="innerHTML" >Pan Hızı</str>
+      <str  fid="#idTiltSpeed"  attr="innerHTML" >Tilt hızı</str>
+      <str  fid="#idAlarmType"  attr="innerHTML" >Alarm tipi</str>
+      <str  fid="#idAlarmTime"  attr="innerHTML" >Alarm Zamanı</str>
+      <str  fid="#PresetEdit"  attr="title" >Preset No</str>
+      <str  fid="#AddPresetBtn"  attr="title" >Ekle</str>
+      <str  fid="#Del_PresetListChkBox"  attr="Adlandır" >Preset List</str>
+      <str  fid="#DelPresetBtn"  attr="title" >Sil</str>
+      <str  fid="#Call_PresetListChkBox"  attr="Adlandır" >Preset List</str>
+      <str  fid="#CallPresetBtn"  attr="title" >Çağır</str>
+      <str  fid="#zoomtele"  attr="title" >Zoom Aç</str>
+      <str  fid="#zoomwide"  attr="title" >Zoom çık</str>
+      <str  fid="#FFar"  attr="title" >Focus Uzak</str>
+      <str  fid="#FNear"  attr="title" >Focus yakın</str>
+      <str  fid="#IrisOpen"  attr="title" >Iris Aç</str>
+      <str  fid="#IrisClose"  attr="title" >Iris kapat</str>
+      <str  fid="#Talkback"  attr="title" >Konuşma Baş.</str>
+      <str  fid="#RealRecord"  attr="title" >Video</str>
+      <str  fid="#SnapPicture"  attr="title" >Foroğraf</str>
+      <str  fid="#StopPlayReal"  attr="title" >Durdur</str>
+      <str  fid="#PlayRealVideo"  attr="title" >Oynat</str>
+      <str  fid="#left"  attr="title" >Sol</str>
+      <str  fid="#right"  attr="title" >Sağ</str>
+      <str  fid="#up"  attr="title" >Yukarı</str>
+      <str  fid="#down"  attr="title" >Aşağı</str>
+      <str  fid="#left_up"  attr="title" >Sol Yukarı</str>
+      <str  fid="#right_up"  attr="title" >Sağ Aşağı</str>
+      <str  fid="#left_down"  attr="title" >Sol Aşağı</str>
+      <str  fid="#right_down"  attr="title" >Sağ Aşağı</str>
+      <str  fid="#back"  attr="title" >Reset</str>
+      <str  fid="#exeadvancefunc"  attr="Adlandır" >Execute</str>
+      <str  fid="#exeorbitscan"  attr="title" >Ok</str>
+      <str  fid="#LoadPath"  attr="title" >Kayıt yolu belirle</str>
+      <str  fid="#tip_alarmtitle"  attr="innerHTML" >Alarm Bilgisi</str>
+      <str  fid="#PlayerTips1"  attr="innerHTML" >Hız Değeri belirt</str>
+      <str  fid="#PlayerTips2"  attr="innerHTML" >Hız Değerine Tamsayı lütfen!</str>
+      <str  fid="#PlayerTips3"  attr="innerHTML" >Preset No belirt</str>
+      <str  fid="#PlayerTips4"  attr="innerHTML" >Preset Değeri Tamsayı lütfen!</str>
+      <str  fid="#lusername"  attr="innerHTML" >Kullanıcı Adı</str>
+      <str  fid="#lpassword"  attr="innerHTML" >Şifre</str>
+      <str  fid="#tdLanguage"  attr="innerHTML" >Lisan</str>
+      <str  fid="#LoginButton"  attr="innerHTML" >Giriş</str>
+      <str  fid="#DownloadButton"  attr="innerHTML" >Yazılım Kur</str>
+      <str  fid="#logo_img"  attr="src" >images/logo-en-us.jpg</str>
+      <str  fid="#BufferTick_tip"  attr="innerHTML" >Buffer</str>
+      <str  fid="#ptz_title_img"  attr="src" >images/play_08_en.gif</str>
+      <str  fid="#BGPTZControl"  attr="css" cssname="backgroundImage" >url(/images/play_08_en.gif);</str>
+      <str  fid="#BGlogo"   attr="css" cssname="backgroundImage"  >/images/logo_en_null.gif</str>
+    </ipc_html>
+  </Resources>
+  
+</lang>
+
+

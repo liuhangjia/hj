@@ -1,0 +1,879 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/mwsmartui.css"/>
+<link rel="stylesheet" type="text/css" href="./css/font-awesome.css"/>
+<script src="./js/jquery-1.9.1.js?v=1.0.0.19" type="text/javascript" charset="utf-8"></script>
+<script src="./js/ipc.js?v=1.0.0.26" type="text/javascript" charset="utf-8"></script>
+<script src="./js/common.js?v=1.0.0.19" type="text/javascript" charset="utf-8"></script>
+<style>
+
+.menulist{text-align:right;padding:0 0 0 0;margin:0 0 0 0;background:url(images/play_01.gif);width:1007px;height:74px;} 
+.divbutton{	margin:0 auto;vertical-align:middle;float:left;	background-image:url(images/button.gif);background-position: 0px 0px;height:28px;line-height:26px;cursor:pointer;width:77px;	color:#148200;margin-right:2px;text-align:center;}
+#apDiv1{position:absolute;width:253px;height:149px;z-index:1;left: 916px;top: 495px;	background-image: url(images/gaojing_bg.gif);}
+
+.menulist li{position:relative;display:block;float:right;width:56px;height:74px;cursor:pointer;	margin:4 2 2 2;text-align:center;color:#ffffff;font-size:14px;margin-right:8px;}
+.menulist  li div{width:56px;height:56px;}
+.playitemmenu{text-align:center;} 
+.playitemmenu  li{position:relative;display:block;float:left;width:47px;height:46px;cursor:pointer;	margin:0;text-align:center;	color:#ffffff;} 
+li{position:relative;display:block;float:left;}
+.ptzposition {width:130px;text-align:center;height:130px;margin:0px;padding:0px;} 
+.ptzposition ul{margin:0px;	padding:0px;} 
+.ptzposition ul li{	width:42px;	height:44px;position:relative;display:block;float:left;	margin:0px;	padding:0px;} 
+.presetmenu {width:100px;text-align:center;height:130px;margin:0px;	padding:0px;} 
+.presetmenu ul{margin:0px;	padding:0px;display:block;}
+.presetmenu ul li{width:40px;height:43px;position:relative;display:block;float:left;margin:0px;padding:0px;}  
+.presetmenu ul .presettext{width:12px;font-size:12px;height:43px;position:relative;display:block;float:left;margin:0px;padding:0px;}
+
+body{width:1007px;color:#cccccc;padding:0 0 0 0;margin:auto;  } 
+.scrollable{overflow: auto;width: 70px;height: 80px;border: 1px silver solid; }
+.scrollable select{border: none; }
+.alarmtable{font-size:12px;border-top:solid 1 #cccccc;border-left:solid 1 #cccccc;border-bottom:solid 1 #cccccc;width:220px;height:110px;margin-left:5px;}
+.alarmtable tr th{font-weight:bold;font-size:14px;border-right:solid 1 #cccccc;text-align:center;} 
+.alarmtable tr td{border-right:solid 1 #cccccc;border-top:solid 1 #cccccc;padding-left:4px;} 
+#alarmbody div{overflow-y:scroll;width:220px;height:80px;}    
+.a {font-size: 12px;color: #666;}
+.b {font-size: 12px;color: #CCC;}
+.tiplabelcolor{color:#000000;text-align:right; }
+.inputext{border:1px solid #333333;font-size:12px;width:155px;height:24px;color:#000000;}
+</style>
+
+<style type="text/css"> 
+.playitemmenu  li
+{
+	position:relative;
+	display:block;
+	float:left;
+	width:47px;
+	height:46px;
+	cursor:pointer;
+	margin:0;
+	text-align:center;
+	color:#ffffff;
+	margin-top:12px;
+	margin-left:26px;
+} 
+.noptz_input_td 
+{
+	margin-top:5px;
+	margin-bottom:20px;
+} 
+.input_ptz_table tr td.noptz_input_td
+{
+	height:32px; 
+	vertical-align:top;	
+}  
+.input_ptz_table tr td.noptz_title_td
+{
+	height:26px; 
+	vertical-align:center;	
+}
+</style>
+
+
+<title>网络摄像机</title>
+<script type="text/javascript"> 
+    var bntdefultbgimgae=47;
+    var g_savePath='c:\\';
+    var havecall_backfunc=false;
+ 
+    function OnMouseDW(obj)
+    {
+        var isptz=obj.getAttribute("isptz");
+        if(isptz=="y")
+        {
+            OnPtzControl(obj);   
+        }
+        if(obj.id=="back")
+        {
+            if(!havecall_backfunc)
+            {
+                SendPtzCmd("<xml><cmd>auto</cmd><panspeed>5</panspeed><tiltspeed>5</tiltspeed></xml>"); 
+                havecall_backfunc=true;
+            }
+            else
+            {
+                SendPtzCmd("<xml><cmd>stop</cmd><panspeed>5</panspeed><tiltspeed>5</tiltspeed></xml>"); 
+                havecall_backfunc=false;
+            }
+        }
+        else if (obj.id=="FFar")
+        {
+            OnFocusFarAutoOff(obj);
+        }
+        else if (obj.id=="FNear")
+        {
+            OnFocusNearAutoOff(obj);
+        }
+        else if (obj.id=="IrisOpen")
+        {
+            OnIrisOpenAutoOff(obj);
+        }
+        else if (obj.id=="IrisClose")
+        {
+            OnIrisCloseAutoOff(obj);
+        }        
+        var bgimgsize=obj.getAttribute("bgimagewidth");
+        var hv=parseInt(bgimgsize);
+        if(isNaN(hv))
+        {
+            hv=bntdefultbgimgae;
+        }
+        var height=hv*2;
+        obj.style.backgroundPosition="0px -"+height+"px";// change button image
+    }
+    
+    
+    
+    function OnMouseOT(obj)
+    {
+        var bgimgsize=obj.getAttribute("bgimagewidth");
+        var hv=parseInt(bgimgsize);
+        if(isNaN(hv))
+        {
+            hv=bntdefultbgimgae;
+        }
+	var height=0;
+	if($(obj).attr("isselected")==="true")
+	{
+		height=bntdefultbgimgae*2;
+	}
+	obj.style.backgroundPosition="0px -"+height+"px";
+    }
+    
+    function OnMouseOV(obj)
+    {
+        var bgimgsize=obj.getAttribute("bgimagewidth");
+        var hv=parseInt(bgimgsize);
+        if(isNaN(hv))
+        {
+            hv=bntdefultbgimgae;
+        }
+        var height=hv;
+        obj.style.backgroundPosition="0px -"+height+"px";
+    }
+    
+    function OnMouseUUP(obj)
+    { 
+        var isptz=obj.getAttribute("isptz");
+        if(isptz=="y" || obj.id=="FFar" || obj.id=="FNear" || obj.id=="IrisOpen" || obj.id=="IrisClose")
+        {
+            OnPtzStop(obj);   
+        }
+        var bgimgsize=obj.getAttribute("bgimagewidth");
+        var hv=parseInt(bgimgsize);
+        if(isNaN(hv))
+        {
+            hv=bntdefultbgimgae;
+        }
+		var height=hv;
+		if($(obj).attr("isselected")==="true")
+		{
+			height=bntdefultbgimgae*2;
+		}
+        obj.style.backgroundPosition="0px -"+height+"px";
+    }    
+    var PresetArr = new Array();
+    
+	
+	
+	
+ 
+function  DoDelptzByObject(obj)
+{
+	var str=$(obj).val();
+	return DOdelpre(str);
+}
+
+function  DoCallptzByObject(obj)
+{
+	var str=$(obj).val();
+	var	tmp = '<xml>\n'+'<cmd>callpreset</cmd>\n'+'<preset>'+str+'</preset>\n'+'</xml>';
+	SendPtzCmd(tmp);	
+	return true;
+}
+
+ 
+function DoAddptzByObject(obj,delid)
+{
+	var str=$(obj).val();
+	return DOaddpre(str,delid);
+}
+
+ 
+var IntervalID=0; 
+
+var g_szLan = null;
+var g_lanxXmlDoc = null;
+function UnInitPage()
+{   
+    window.clearInterval(IntervalID);
+}
+
+</script></head> 
+
+
+ 
+<script type="text/javascript" > 
+    var bntdefultbgimgae=47;
+    var g_savePath='c:\\';
+    var havecall_backfunc=false;
+ 
+    function OnMouseDW(obj)
+    {
+        var isptz=obj.getAttribute("isptz");
+        if(isptz=="y")
+        {
+            OnPtzControl(obj);   
+        }
+        if(obj.id=="back")
+        {
+            if(!havecall_backfunc)
+            {
+                SendPtzCmd("<xml><cmd>auto</cmd><panspeed>5</panspeed><tiltspeed>5</tiltspeed></xml>"); 
+                havecall_backfunc=true;
+            }
+            else
+            {
+                SendPtzCmd("<xml><cmd>stop</cmd><panspeed>5</panspeed><tiltspeed>5</tiltspeed></xml>"); 
+                havecall_backfunc=false;
+            }
+        }
+        else if (obj.id=="FFar")
+        {
+            OnFocusFarAutoOff(obj);
+        }
+        else if (obj.id=="FNear")
+        {
+            OnFocusNearAutoOff(obj);
+        }
+        else if (obj.id=="IrisOpen")
+        {
+            OnIrisOpenAutoOff(obj);
+        }
+        else if (obj.id=="IrisClose")
+        {
+            OnIrisCloseAutoOff(obj);
+        }        
+        var bgimgsize=obj.getAttribute("bgimagewidth");
+        var hv=parseInt(bgimgsize);
+        if(isNaN(hv))
+        {
+            hv=bntdefultbgimgae;
+        }
+        var height=hv*2;
+        obj.style.backgroundPosition="0px -"+height+"px";// change button image
+    }
+    
+    
+    
+    function OnMouseOT(obj)
+    {
+        var bgimgsize=obj.getAttribute("bgimagewidth");
+        var hv=parseInt(bgimgsize);
+        if(isNaN(hv))
+        {
+            hv=bntdefultbgimgae;
+        }
+	var height=0;
+	if($(obj).attr("isselected")==="true")
+	{
+		height=bntdefultbgimgae*2;
+	}
+	obj.style.backgroundPosition="0px -"+height+"px";
+    }
+    
+    function OnMouseOV(obj)
+    {
+        var bgimgsize=obj.getAttribute("bgimagewidth");
+        var hv=parseInt(bgimgsize);
+        if(isNaN(hv))
+        {
+            hv=bntdefultbgimgae;
+        }
+        var height=hv;
+        obj.style.backgroundPosition="0px -"+height+"px";
+    }
+    
+    function OnMouseUUP(obj)
+    { 
+        var isptz=obj.getAttribute("isptz");
+        if(isptz=="y" || obj.id=="FFar" || obj.id=="FNear" || obj.id=="IrisOpen" || obj.id=="IrisClose")
+        {
+            OnPtzStop(obj);   
+        }
+        var bgimgsize=obj.getAttribute("bgimagewidth");
+        var hv=parseInt(bgimgsize);
+        if(isNaN(hv))
+        {
+            hv=bntdefultbgimgae;
+        }
+		var height=hv;
+		if($(obj).attr("isselected")==="true")
+		{
+			height=bntdefultbgimgae*2;
+		}
+        obj.style.backgroundPosition="0px -"+height+"px";
+    }    
+    var PresetArr = new Array();
+    
+	
+	
+	
+ 
+function  DoDelptzByObject(obj)
+{
+	var str=$(obj).val();
+	return DOdelpre(str);
+}
+
+function  DoCallptzByObject(obj)
+{
+	var str=$(obj).val();
+	var	tmp = '<xml>\n'+'<cmd>callpreset</cmd>\n'+'<preset>'+str+'</preset>\n'+'</xml>';
+	SendPtzCmd(tmp);	
+	return true;
+}
+
+ 
+function DoAddptzByObject(obj,delid)
+{
+	var str=$(obj).val();
+	return DOaddpre(str,delid);
+}
+
+ 
+var IntervalID=0; 
+
+var g_szLan = null;
+var g_lanxXmlDoc = null;
+function UnInitPage()
+{   
+    window.clearInterval(IntervalID);
+}
+
+</script>
+ 
+  
+<body  OnUnLoad="try{UnInitPage();}catch(eevv){}"  bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="text-align:center;position:relative;"  >
+
+
+
+
+
+
+
+
+ 
+<table width="100%"  height="99.6%" cellpadding="0" cellspacing="0" border="0"  style="position:relative;" >
+    <tr>
+        <td align="center" valign="middle" > 
+		
+		
+		
+
+
+		
+<!--  登录窗口开始 -->
+
+<table style="background:url(images/login.jpg); width:996px; height:600px;display:none;" border="0" cellpadding="0" cellspacing="0"  id="login_table"  >
+<tr>
+<td>
+    
+    <table cellpadding="0" cellspacing="0" border="0"  >
+            <tr>
+                <td style="height:167px; width:280px;" >&nbsp;</td>
+                <td style="width:200px;" >&nbsp;</td>
+                <td style="width:220px;" >&nbsp;</td>    
+                <td style="width:260px;" >&nbsp;</td>                 
+            </tr>
+            <tr >
+                <td style="height:60px;" >&nbsp;</td>
+                <td colspan="2" valign="top" >
+                <img src="images/logo-en-us.jpg" id="logo_img"  border="0"  />                
+                </td>
+                <td>&nbsp;</td>                 
+            </tr>
+            <tr>
+                <td  style="height:140px;" >&nbsp;</td>
+                <td colspan="2"  >
+                
+                <table cellpadding="0" cellspacing="0"  >
+                    <tr>
+                            <td style="width:160px;"  align="right" > 
+                                <label id="lusername"  class="tiplabelcolor"  >&nbsp;</label>
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;</td>
+                            <td style="width:280px;height:32px;">
+                                <input id="username" maxlength="30" class="inputext"   value=""   tabindex="1"  onKeyDown="CheckEnter(this.id,this.value);"  />
+                            </td>
+                            <td></td>
+                    </tr>
+                    <tr>
+                            <td align="right"  style="width:160px;"  >
+                                <label id="lpassword"   class="tiplabelcolor"  >&nbsp;</label>
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;</td>
+                            <td> 
+                             <input id="password" maxlength="30" class="inputext"   type="password" value=""  tabindex="2"  onKeyDown="CheckEnter(this.id,this.value);"   />                        
+                            </td>
+                            <td></td>
+                    </tr>   
+                    
+                    <tr>
+                        <td style="height:36px;" >&nbsp;</td>
+                         <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>
+                                                
+                        <label style="margin-left:60px;"    class="divbutton" 
+                        onmousedown="OnDefMouseDW(this);"
+                        onmouseout="OnDefMouseOT(this);" 
+                        onmouseover="OnDefMouseOV(this);" 
+                        onmouseup="OnDefMouseUP(this);"  bgimageheight="28"  id="LoginButton"  onclick="DoLogin();"   onblur="ChangeItem(3,this,this.value);"      >Login</label>
+                                
+                        </td>
+                        <td>
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align:left; height:22px;" >
+                        
+                            <table cellpadding="0" cellspacing="0" >                        
+                                <tr>
+                                    <td style="width:20px;" >&nbsp;</td>
+                                    <td> 
+                                        <div id="tipinfo_div"  class="tiplabelcolor"  style="display:block;text-indent:20px;height:20px; overflow:hidden; width:420px; font-size:12px; text-align:left;" >                            
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>                    
+                        </td>
+                    </tr>
+                                 
+                </table> 
+                </td>    
+                <td>&nbsp;</td>                 
+            </tr>
+            <tr>
+                <td style="height:60px;" >&nbsp;</td>
+                <td colspan="2">                
+                  <table class="showitemfont" >
+                        <tr>
+                        <td style="width:60px;">&nbsp;
+                         
+                        </td>
+                        <td style="width:140px;"> 
+                            <a id="DownloadButton"  href="Update.exe?version=1.0.0.19.exe" target="_blank"  >&nbsp;</a>                                                 
+                        </td> 
+                        <td id="tdLanguage"  class="tiplabelcolor" style="width:120px;"  >&nbsp;
+                           
+                        </td>
+                        <td>
+                            <select class="selectitem" id="idLanguage"  onchange="OnChangeLangSel(this.value);"  style="WIDTH: 80px; HEIGHT: 20px">
+                            </select>
+                        </td>
+                        </tr> 
+                </table>
+                </td>    
+                <td>&nbsp;</td>                 
+            </tr>
+            <tr>
+                <td style="height:160px;" >&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>    
+                <td>&nbsp;</td>                 
+            </tr>
+    </table>
+</td>
+</tr>
+</table>
+
+
+<!--  登录窗口结束 -->
+
+
+
+
+<!--  播放窗口开始 playwindow start -->
+	<table id="play_table" width="1008" height="680" border="0" cellpadding="0" cellspacing="0"  style="position:relative;display:block;"  >
+    <tr style="display: none;">
+        <td  id="BGTitle" style="height:70px;width:100%;" >
+            <ul   class="menulist" style="text-align:right;"  >
+                <!--li style="float:left; width:200px; margin:0px; padding-top:12px;" class="logo" >
+                    <img src="images/play_01.gif" style="width:180px; height:56px;"  />
+                </li-->
+				<li style="float:left; margin:0px; padding-top:0px;"  >
+					<img src="" id="showqr_img" width="72px" height="72px" style="display:none"  >
+				</li>
+                
+               
+                
+                <li  style="float:left; width:290px; margin:0px; padding-top:12px;" class="logo"  >
+                    <div id="BGlogo"  style="width:280px; height:61px;"  >&nbsp;</div>		    	        
+                </li>
+
+
+                <li style='float:left;width:200px;' >
+                	<div style='color:#ffffff;width:200px;text-align:left;' id="showverinfo" >&nbsp;</div>
+              	</li>
+				
+                <li style='float:left;width:200px;' >
+					<div style="display:none" id="alarmtitle" >&nbsp;</div>
+                	<div style='color:#ffffff;width:200px;text-align:left;margin-top:5px;' id="alarmFormMsg" >&nbsp;</div>					
+              	</li>
+
+
+                <li>        
+                    <div   id="exitlogin"  class="exitlogin"   
+                        onmousedown="OnMouseDW(this);"
+                        onmouseout="OnMouseOT(this);" 
+                        onmouseover="OnMouseOV(this);" 
+                        onmouseup="OnMouseUUP(this);"  bgimagewidth="56" curbgimage="0"   onclick="OnLogout();"  ></div>
+                        <span> <label id="idQuit"  style="display:inline;overflow:hidden; width:60px;"  >Exit</label> </span>
+                </li> 
+				
+				
+				
+
+                
+                <li id="cfgli_id"  style="display:none;"   >
+                    <div id="configipc"  class="configbnt"   
+                        onmousedown="OnMouseDW(this);"
+                        onmouseout="OnMouseOT(this);" 
+                        onmouseover="OnMouseOV(this);" 
+                        onmouseup="OnMouseUUP(this);" bgimagewidth="56" curbgimage="0" onClick="OnConfig();"    ></div>
+                <span><label  id="idCameraConfig"  style="display:inline; overflow:hidden; width:60px;"   >Config</label> </span></li>
+				
+                <li  style="display:none;"  id="cfgli_playback" >
+                    <div id="playback" class="playbackbnt"   
+                        onmousedown="OnMouseDW(this);"
+                        onmouseout="OnMouseOT(this);" 
+                        onmouseover="OnMouseOV(this);" 
+                        onmouseup="OnMouseUUP(this);" bgimagewidth="56" curbgimage="0"   onclick="OnPlayBack();"   ></div>
+                    <span > <label id="idPlayBack" style="display:inline; overflow:hidden; width:60px;"  >Play Back</label> </span></li>	      
+            </ul>
+        </td>
+    </tr>
+
+<!-- end of title -->
+ 
+	<tr>
+		<td valign="top" >
+			<table cellpadding="0" cellspacing="0" border="0" style="height:590px; width:100%; margin:0px 0px 0px 0px; vertical-align:top;"  >
+				  <tr>
+					<td valign="middle" >
+					<!-- play video area -->
+						<table  id="IDPlayPict"  style="height:585px; width:885px;" cellpadding="0" cellspacing="0" border="0" >
+						  <tr>
+							<td  style=" width:876px;"  >
+<script type="text/javascript" > 
+	WriteCloudPlayer(876,570);
+</script>
+							
+							</td>
+							  </tr>
+					  </table>	
+                      	<div style="width:876px; height:40px; text-align:center;">
+<a href="#" id="PlayRealVideo"onmousedown="OnMouseDW(this);"onmouseout="OnMouseOT(this);" onMouseOver="OnMouseOV(this);" 							
+onmouseup="OnMouseUUP(this);"  onclick="OnPlay();" class="mwsmartui-linkbutton" ><i class="fa fa-play"> </i> 播放视频</a>
+
+<a href="#" id="StopPlayReal"  onmousedown="OnMouseDW(this);"
+onmouseout="OnMouseOT(this);" onMouseOver="OnMouseOV(this);" onmouseup="OnMouseUUP(this);"
+ onclick="OnStop();" class="mwsmartui-linkbutton" ><i class="fa fa-stop"> </i> 停止播放</a>
+ 
+<a href="#" id="SnapPicture" onmousedown="OnMouseDW(this);" onmouseout="OnMouseOT(this);" onMouseOver="OnMouseOV(this);" 
+onmouseup="OnMouseUUP(this);" onclick="OnCapture();"  class="mwsmartui-linkbutton" ><i class="fa fa-image"> </i> 快照图片</a>
+
+<a href="#" id="RealRecord"  onmousedown="OnMouseDW(this);" onmouseout="OnMouseOT(this);" onMouseOver="OnMouseOV(this);" 
+onmouseup="OnMouseUUP(this);" onclick="OnRecord();"  title="Record"  class="mwsmartui-linkbutton" ><i class="fa fa-video-camera"> </i> 实录视频</a>
+
+<a href="#" id="Talkback"  onMouseDown="OnMouseDW(this);" onmouseout="OnMouseOT(this);" onMouseOver="OnMouseOV(this);" 
+onmouseup="OnMouseUUP(this);"  onclick="OnTalk();"  title="Talk"  class="mwsmartui-linkbutton" ><i class="fa fa-microphone"> </i> 对讲电话</a>
+</div> 			
+                        <table cellpadding="0" cellspacing="0" border="0"   class="input_ptz_table" style="width:100%;display: none;" >
+                            <tr>
+                              <td  colspan="3"  style="width:50px;" class="noptz_title_td" ><div style="display:inline; overflow:hidden; width:50px;font-size:12px;height:16px;">
+                                  <label id="idSavePath"  >存储路径</label>
+                                </div> 
+							</td>
+							<td><a  id="LoadPath" style=" width:24px; height:26px;" onMouseDown="OnMouseDW(this);"
+						onMouseOut="OnMouseOT(this);" onMouseOver="OnMouseOV(this);" onMouseUp="OnMouseUUP(this);"  bgimagewidth="26" curbgimage="0" title=""  onclick="OnGetSaveDir();"     ></a></td>
+							
+							</tr>
+							<tr>
+                              <td  colspan="6"   class="noptz_input_td"   ><div style="width:105px; overflow:hidden; text-align:left; height: 20px;"  >
+                                  <div id="showdirdiv" style="font-size:14px;width:99999px;overflow:hidden; display:inline;" title="c:\" > c:\ </div>
+                              </div></td> 
+                            </tr>
+                            <tr>
+                              <td   colspan="6"  style="width:50px;" align="left" class="noptz_title_td" ><div style="display:inline;text-algin:right; overflow:hidden;height:16px; width:50px;font-size:12px;">
+                                  <label id="idStreamType" style='text-algin:right;'  >播放码流</label>
+                                </div>                              
+							   </td>
+							</tr>
+							<tr>
+                              <td  colspan="6"  class="noptz_input_td"  ><select name="select2" class="a" id="idChangeStream" style="width:85px; height: 20px;" title="码流" onChange="OnChangeStream(this.value);">
+                                  <option id="idMainStream" value="0" >主码流</option>
+                                  <option id="idSubStream" value="1" selected="selected"  >子码流</option>
+                                </select>                              </td>
+                            </tr>
+							 
+							<tr>
+                               <td  colspan="6" width="50px" align="left" class="noptz_title_td"  ><label id="BufferTick_tip" style="font-size:12px;"    >缓冲</label>                                          </td>
+							</tr>
+							<tr>
+								 <td  colspan="6"   class="noptz_input_td"   ><select name="bufferTick" class="a" id="bufferTick" onChange="OnChangeBufferTick(this.value);" style="width:85px; height:20px;" >
+                                              <option value="50" >50</option>
+                                              <option value="100" >100</option>
+                                              <option value="200" >200</option>
+                                              <option value="300"  >300</option>
+                                              <option value="400" >400</option>
+                                              <option value="500" >500</option>
+                                              <option value="800" selected="selected"  >800</option>
+                                              <option value="1000" >1000</option>
+                                            </select>                                         
+								</td>
+							</tr>
+                        </table>
+                      
+                      </td>
+					
+				  </tr>
+			</table>		
+		</td>
+	</tr>
+</table>
+
+
+<!--  播放窗口结果 playwindow end -->
+  
+        </td>
+    </tr>
+</table>
+ 
+
+<script type="text/javascript" > 
+
+function CheckAndLogin(objid)
+{
+	var checkret=checkdataUserName();
+	if(checkret!="")
+	{
+		return false;
+	}
+	g_user=document.getElementById("username").value;
+	g_pass=document.getElementById("password").value;
+	var logintalbe=document.getElementById("login_table"); 
+	var playtalbe=document.getElementById("play_table"); 
+	logintalbe.style.display="none";
+	playtalbe.style.display="block";
+	OnPlay();
+	CreateQRCode();
+    	return true;
+}
+
+var haveInitPassWord=false;
+function OnPlayStream(ty)
+{
+try{var ctrlobj=document.getElementById('CloudPlayerCtrl');
+var defpass='cf010de7d2507500398b8dd19157be02';
+nRet=ctrlobj.StartPlayP2PVideo('47.99.155.48:10048\r\ntype=0&load=0&addr=jjrelay1.s1.seetong.com:1443;type=0&load=0&addr=xxrelay1.s1.seetong.com:1443;type=0&load=0&addr=xxrelay2.s1.seetong.com:1443;type=0&load=0&addr=jjrelay1.s1.seetong.com:1443','webipc',defpass,g_user,g_pass,'7161177',100,ty);
+;ctrlobj.PlaySound(1);}catch(eevv){}
+}
+
+
+function CreateQRCode()
+{
+	try
+	{
+	    var playobj=document.getElementById("CloudPlayerCtrl"); 
+	    var bsqr=playobj.CreateQR("p2p://"+g_user+":"+g_pass+"@7161177.seetong.com");
+	    var obj=document.getElementById("showqr_img");
+	    obj.style.display="block";
+	    obj.src="data:image/gif;base64,"+bsqr;
+	}
+	catch(eevv){}
+}
+
+
+function OnLogin()
+{
+	OnPlayStream(1);
+	CreateQRCode();
+}
+
+
+function DoOnCtrlEvent(data,id,subid)
+{
+	if(id==10001 && subid==10001)
+	{		
+		if(g_user!='' && g_pass!='')
+	        {
+			try{OnPlay();}catch(eevv){}
+		}
+		CreateQRCode();
+	}
+	if(id==70 && subid==70)
+	{
+		try{OnChangeAbilityInfo(data);}catch(eevv){}
+	}
+}
+
+
+
+
+function addEvent(obj, name, func)
+{
+	try
+	{
+		if (obj.attachEvent)
+		{
+			obj.attachEvent(name, func);
+		}
+		else
+		{
+			obj.addEventListener(name, func, false); 
+		}
+	}catch(eev){}
+}
+
+function removeEvent(obj, name, func)
+{
+	try
+	{
+		if (obj.detachEvent)
+		{
+			obj.detachEvent(name, func);
+		}
+		else
+		{
+			obj.removeEventListener(name, func, false); 
+		}
+	}catch(eev){}
+}
+
+
+function OnUninit(e)
+{
+	var obj=document.getElementById("CloudPlayerCtrl");
+	removeEvent(obj,"OnPlayEvent",DoOnPlayEvent);
+	removeEvent(obj,"OnCtrlEvent",DoOnCtrlEvent);
+}
+
+function InitPage()
+{
+    window.onunload=OnUninit;
+    document.body.onunload=OnUninit;
+    OnUninit();
+    try
+    {
+        var obj=document.getElementById("CloudPlayerCtrl");
+        addEvent(obj,"OnPlayEvent",DoOnPlayEvent);
+        try{addEvent(obj,"OnCtrlEvent",DoOnCtrlEvent);}catch(eevv2){}
+        obj.SetIEWindow(window,"DoOnPlayEvent,DoOnCtrlEvent");
+    }catch(eevv){}	
+    try
+    {
+        g_useP2PConnect=true;
+g_isFirstAutoLogin=false;
+if(!haveInitPassWord){haveInitPassWord=true;
+g_user='admin';
+g_pass='123456';
+ g_initlang='zh-cn';
+  
+}
+     }catch(eevv){}
+    try{CreateQRCode();}catch(eevv){}
+    var deflan=g_initlang;
+    try
+    {
+        InitLangList('idLanguage'); 
+        LoadDefaultBufferTick();
+    }catch(eevv){}
+    try
+    {
+        OnChangeLangSel(deflan);
+        $("#idLanguage").val(deflan);
+    }catch(eevv){}
+    try
+    {
+		    if(IntervalID!=0)
+		    {
+			      window.clearInterval(IntervalID);
+		    }
+		    IntervalID = window.setInterval("OnIPCStateChange()", 500);
+    }catch(eevv){}
+    // AutoGetPreset();
+    g_useP2PConnect=true;
+g_isFirstAutoLogin=false;
+if(!haveInitPassWord){haveInitPassWord=true;
+g_user='admin';
+g_pass='123456';
+ g_initlang='zh-cn';
+  
+}
+     CreateQRCode();
+
+    if(g_user!='' && g_pass!='')
+    {
+        try
+        {
+            OnPlay();
+            var logintalbe=document.getElementById("login_table"); 
+            var playtalbe=document.getElementById("play_table"); 
+            logintalbe.style.display="none";
+            playtalbe.style.display="block";
+        }catch(eevv){}
+    }
+    else
+    {
+        var logintalbe=document.getElementById("login_table"); 
+        var playtalbe=document.getElementById("play_table"); 
+        playtalbe.style.display="none";
+        logintalbe.style.display="block";
+    }
+}
+
+// 上传报告
+function PostPV()
+{
+    var reportrequrl="http://r1.seetong.com/report/postwebpv.php?t="+new Date().getTime();
+    var adddata=new Array();
+    try
+    {
+        $.ajax({
+            async:false,
+            url: reportrequrl,
+            type: "GET",
+            dataType: 'jsonp',
+            jsonp: '_report_data_',
+            data: adddata,
+            timeout: 5000,
+            beforeSend: function()
+            {
+                //
+            },
+            success: function (json)
+            {
+                //
+            },
+            complete: function(XMLHttpRequest, textStatus)
+            {
+
+            },
+            error: function(xhr)
+            {
+                //
+            }
+        });
+    }catch(eevv){}
+}
+
+PostPV();
+
+InitPage();
+window.onload=InitPage;
+</script>
+
+</body>
+</html>

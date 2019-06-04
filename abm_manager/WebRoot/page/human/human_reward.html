@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+	<link rel="stylesheet" type="text/css" href="./css/mwsmartui.css">
+	<link rel="stylesheet" type="text/css" href="./css/color.css">
+	<link rel="stylesheet" type="text/css" href="./css/indexlb.css">
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.mwsmartui.min.js"></script>
+	<script type="text/javascript" src="./js/mwsmartui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="./js/MingwenJSON.js"></script>
+	<script type="text/javascript" src="kindeditor/kindeditor.js"></script>
+	<script type="text/javascript" src="kindeditor/lang/zh_CN.js"></script>
+	<script type="text/javascript" src="kindeditor/plugins/code/prettify.js"></script>
+	<script language="javascript" type="text/javascript" src="./js/mw_js/batch.js"></script>
+</head>
+
+<body>
+<div id="work_" class="mwsmartui-panel" data-options="border:false,fit:true">
+    <div id="worker_list_toolbar" class="toolbar-div">
+            <form id="work_queryform" method="post" >
+            <div class="lbcxtj">
+                <label>项目名称：</label>
+                <input id="check_mc" class="mwsmartui-textbox" data-options="width:'145px',height:'30px',prompt:''">
+            
+            </div>
+            <div class="lbcxtj">
+                <label>项目类别：</label>
+                <input id="batch_mc" class="mwsmartui-textbox" data-options="width:'145px',height:'30px',prompt:''">
+            
+            </div>    
+            <div class="lbcxtj">
+                <label>开始时间：</label>
+                <input id="batch_kssj" class="mwsmartui-datebox" data-options="width:'145px',height:'30px',prompt:''">
+            
+            </div>
+            <div class="lbcxtj">
+                <label>结束时间：</label>
+                <input id="batch_jssj" class="mwsmartui-datebox" data-options="width:'145px',height:'30px',prompt:''">
+            
+            </div>
+            <div class="lbcxtj">
+                <label>项目状态：</label>
+                <input id="batch_zt" class="mwsmartui-combobox" data-options="width:'145px',height:'30px',url: 'combobox_data.json',
+				method: 'get',
+				valueField:'value',
+				textField:'text'">
+            
+            </div>            
+          
+            </form>
+          
+        <div class="toolbar-btn">
+			<div class="btn-left">
+                    <a href="#" id="" class="mwsmartui-linkbutton" data-options="onClick:work_doDel"><i class="fa fa-trash"> </i> 批量删除</a>
+			</div>
+			<div class="btn-right">
+				<a href="#" class="mwsmartui-linkbutton"  data-options="onClick:work_doSearch"><i class="fa fa-search"> </i> 查询</a>
+                    <a href="#" class="mwsmartui-linkbutton"  data-options="onClick:work_doReset" ><i class="fa fa-refresh"> </i> 重置</a>
+			</div>
+		</div>
+    </div>
+       <table id="work_list" class="mwsmartui-datagrid" data-options="
+            pagination:true,
+			pageSize:10,
+			selectOnCheck:true,
+			fileOnSelect:true,
+			singleSelect:true,
+			border:false,
+			striped:true,
+			fit:true,
+			method:'get',
+            scrollbarSize:157,
+			toolbar:'#worker_list_toolbar'">
+            <thead>
+                <tr>
+               		<th data-options="field:'ck',checkbox:true">ID</th>
+                    <th data-options="field:'tel',width:'25%'"><b>项目名称</b></th>
+                    <th data-options="field:'zgh',width:'8%'"><b>项目类别</b></th>
+                    <th data-options="field:'name',width:'15%'"><b>类型</b></th>
+                    <th data-options="field:'zgxm',width:'16%'"><b>主管</b></th>
+                    <th data-options="field:'zgxj',width:'16%'"><b>处理时间</b></th>
+                    <th data-options="field:'dxzt',width:'20%'"><b>处理情况</b></th>
+                    <th data-options="field:'status',width:'120',formatter:work_doHandle"><b>操作</b></th>
+                   
+                    
+                </tr>
+            </thead>
+            <tbody>
+            	<tr>
+                	<td></td>
+                	<td>某某企业厂区监控</td>
+                	<td>监控</td>
+                	<td>某某企业厂区</td>
+                	<td>牟义星</td>
+                    <td>2018-09-22 01:00:00</td>
+                    
+                    <td>一切正常</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+  </div>
+</body>
+</html>

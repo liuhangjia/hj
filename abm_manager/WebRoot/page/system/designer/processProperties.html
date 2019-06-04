@@ -1,0 +1,154 @@
+
+<div id="process-properties-layout" class="mwsmartui-layout" data-options="fit:true,border:false">
+	<div data-options="region:'north',border:false,height:'45px'">
+		<div class="toolbar-btn">
+			<a href="#" class="mwsmartui-linkbutton" data-options="onClick:saveProcessProperties,plain:true" style="color: black;border:1px solid #1c86f4;font-weight: bold;background-color: #e8f5fe;"><i class="fa fa-save"> </i> 保存</a>
+		</div>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="task-properties-accordion" class="mwsmartui-accordion" data-options="fit:true,border:false">
+			<div data-options="selected:true,title:'流程属性面板'">
+				<form action="" method="post">
+					<table id="general-properties" width="99%">
+						<tr>
+							<td align="right" style="width:'70px'">企业:</td>
+							<td>
+								<select id="enterprise_id" name="enterprise_id" class="mwsmartui-combobox" data-options="required:true,
+																									editable:false,
+																									prompt:'请选择企业',
+                       																				width:'100%',
+                       																				url:'./Enterprise-listForWorkflow.action',
+                       																				valueField:'id',
+	                       											  								textField:'name'">
+								</select>	
+							</td>
+						</tr>
+						<tr>
+							<td align="right" style="width:'70px'">KEY:</td>
+							<td>
+								<select id="id" name="id" class="mwsmartui-combobox" data-options="required:true,
+																									editable:false,
+																									prompt:'请选择流程项',
+                       																				width:'100%',
+                       																				url:'./SysBaseCode-list.action?type=LC_KEY',
+                       																				valueField:'code',
+	                       											  								textField:'name'">
+								</select>								                      						
+							</td>
+						</tr>
+						<tr>
+							<td align="right">名称:</td>
+							<td><input class="mwsmartui-textbox" data-options="required:true,width:'100%'" id="name" name="name" value=""/></td>
+						</tr>
+						<tr>
+							<td align="right">命名空间:</td>
+							<td><input class="mwsmartui-textbox" data-options="required:true,width:'100%'" id="category" name="category" value=""/></td>
+						</tr>
+						<tr>
+							<td align="right">描述:</td>
+							<td><input class="mwsmartui-textbox" data-options="width:'100%'" id="documentation" name="documentation" size="50" /></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var process, _layout, _listenerList;
+setTimeout(function(){
+	process = workflow.process;
+	_layout = $('#process-properties-layout');
+	_listenerList = _layout.find('#process-listener-list');
+	_layout.find('#enterprise_id').combobox('setValue',process.enterpriseId);
+	var key = process.id;
+	if(key){
+		_layout.find('#id').combobox('setValue',key.split('-')[0]);
+	}
+	_layout.find('#name').textbox('setValue',process.name);
+	_layout.find('#category').textbox('setValue',process.category);
+	/* _layout.find('#type').combobox('setValue',process.type); */
+	_layout.find('#documentation').textbox('setValue',process.documentation);
+	if(process.id_){
+		_layout.find('#enterprise_id').combobox('disable');
+	}
+	var listeners = process.listeners;
+	if(listeners.size  > 0){
+		var rows = [];
+		for(var i = 0 ; i < listeners.size ; i++){
+			var listener = listeners.get(i);
+			var row = {};
+			row.id = listener.id;
+			row.event = listener.event;
+			/* row.type = listener.serviceType; */
+			row['class'] = listener.serviceClass; 
+			rows.push(row);
+		}
+		_listenerList.datagrid('request',{rows:rows,total:rows.length});
+	}
+},100);
+function saveProcessProperties(){
+	var enterpriseId = _layout.find('#enterprise_id').combobox('getValue');
+	var enterpriseName = _layout.find('#enterprise_id').combobox('getText');
+	var key = _layout.find('#id').combobox('getValue');
+	if(_layout.find('form').form('validate')){
+		process.enterpriseId = enterpriseId;
+		process.enterpriseName = enterpriseName;
+		key = key + '-' + enterpriseId;
+		process.id = key;
+		process.name = _layout.find('#name').textbox('getValue');
+		process.category = _layout.find('#category').textbox('getValue');
+		process.documentation = _layout.find('#documentation').textbox('getValue');
+		/* process.type = _layout.find('#type').combobox('getValue'); */
+		$.messager.alert('提示','临时保存数据成功,请注意最后[<font color="blue">提交</font>]数据生效','info');
+	}else{
+		if('' == enterpriseId){
+			$.messager.alert('提示','请选择企业','info');
+			return;
+		}
+		if('' == key){
+			$.messager.alert('提示','请选择流程key','info');
+			return;
+		}
+	}
+}
+
+function removeProcessListener(){
+	var checkeds = _listenerList.datagrid('getChecked');
+	if(checkeds && checkeds.length > 0){
+		var row = checkeds[0];
+		$.messager.confirm('提示','确认删除[<font color=red>'+row['event']+'</font>]吗?',function(b){
+			var index = _listenerList.datagrid('getRowIndex',row);
+			_listenerList.datagrid('deleteRow',index);
+			process.deleteListener(row['id']);
+		});
+	}else{
+		$.messager.alert('提示','请选流程监听信息');
+	}
+}
+
+function chooseProcessListener(){
+	sys_act_listener.select({
+		group:'QJSJ',
+		callback:function(datas){
+			if(datas && datas.length > 0){
+				for(var i = 0 ; i < datas.length ; i++){
+					var row = {};
+					var listener = new draw2d.Process.Listener();
+					listener.id = datas[i]['id_'];
+					row.id = listener.id;
+					listener.event = datas[i]['event'];
+					row.event = listener.event;
+					listener.serviceType = datas[i]['type_'];
+					/* row.type = listener.serviceType; */
+					listener.serviceClass = datas[i]['class_'];
+					row['class'] = listener.serviceClass;
+					listener.serviceExpression = datas[i]['class_'];
+					process.addListener(listener);
+					_listenerList.datagrid('appendRow',row);
+				}
+			}
+		}
+	});
+}
+</script>

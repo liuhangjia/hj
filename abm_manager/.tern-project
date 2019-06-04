@@ -1,0 +1,11 @@
+{
+  "ecmaVersion": 5,
+  "libs": [
+    "jquery"
+  ],
+  "plugins": {
+    "jquery-extension": {
+      
+    }
+  }
+}

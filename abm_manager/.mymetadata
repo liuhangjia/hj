@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="abm_manager"
+  id="myeclipse.1545896644376"
+  context-root="/abm_manager"
+  j2ee-spec="5.0"
+  archive="abm_manager.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

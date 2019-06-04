@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- 字符集过滤-->
+ 	<filter>
+	    <filter-name>CharsetEncodingFilter</filter-name>
+	    <filter-class>com.mw.common.filter.CharsetEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharsetEncodingFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	 
+	<!-- struts2过滤器 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>initServlet</servlet-name>
+		<servlet-class>com.abm.manager.servlet.InitServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+	      <servlet-name>pushlet</servlet-name>
+	      <servlet-class>nl.justobjects.pushlet.servlet.Pushlet</servlet-class>
+	      <load-on-startup>3</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+	      <servlet-name>pushlet</servlet-name>
+	      <url-pattern>/pushlet.srv</url-pattern>
+     </servlet-mapping>
+
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>com.abm.manager.filter.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+
+
+
+
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+</web-app>

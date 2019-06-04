@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <Context path="/abm_manager"> -->
+<!-- 	<Resource name="jdbc/connectdb"  -->
+<!--          type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver" -->
+<!--          url="jdbc:mysql://127.0.0.1:3306/anbao1?useUnicode=true&amp;characterEncoding=utf-8" -->
+<!--          username="root"  -->
+<!--          password="19980810"  -->
+<!--          maxActive="10" -->
+<!--          maxIdle="5" -->
+<!--          testWhileIdle = "true" -->
+<!--          timeBetweenEvictionRunsMillis = "20000" -->
+<!--          validationQuery="select 1"/> -->
+<!-- </Context> -->
+
+<Context path="/alarm">
+	<Resource name="jdbc/connectdb" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		 url="jdbc:mysql://127.0.0.1:3306/abm_mj?useUnicode=true&amp;characterEncoding=utf-8"
+         username="root" 
+         password="root"
+        maxActive="10"
+        maxIdle="6000"
+        maxWait="6000"
+        removeAbandoned="true"
+        removeAbandonedTimeout="7200" 
+        validationQuery="select 1"
+        />
+</Context>
+
+<!-- <Context path="/alarm">
+	<Resource name="jdbc/connectdb" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		 url="jdbc:mysql://39.96.164.157:3306/admmingjiang?useUnicode=true&amp;characterEncoding=utf-8"
+         username="root" 
+         password="MingJiangPass1234"
+        maxActive="10"
+        maxIdle="6000"
+        maxWait="6000"
+        removeAbandoned="true"
+        removeAbandonedTimeout="7200" 
+        validationQuery="select 1"
+        />
+</Context> -->
